@@ -1,13 +1,13 @@
 package com.sixto.techtool
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.net.Uri
 import android.os.Bundle
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 
 /**
@@ -16,7 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
  * + localhost console (127.0.0.1:8001) when on rooted host.
  * OWNER token stored in WebView localStorage via login — never in APK.
  */
-class MainActivity : Activity() {
+class MainActivity : ComponentActivity() {
 
     private var fileCallback: ValueCallback<Array<Uri>>? = null
     private val picker = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -46,7 +46,6 @@ class MainActivity : Activity() {
             }
         }
         setContentView(web)
-        // Prefer on-device TECHTOOL if it is running locally, else cloud URL.
         web.loadUrl(BuildConfig.TECHTOOL_URL)
     }
 }
