@@ -7,4 +7,3 @@ node_modules/
 google-services.json
 *.jks
 *.keystore
-.github/workflows/
